@@ -2,23 +2,25 @@ import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
 import { supabase } from "../../utils/client";
 
-const Dashboard = () => {
-    const[isLoggedOut, setLoggedOut] = useState("false");
+import SideBar from "../../components/sidebar/sidebar"
+import Cards from "../../components/cards/cards"
 
-    const handleLogOut = async (e) => { 
-        e.preventDefault()
-       const {error} = await supabase.auth.signOut();
-       if (error) { 
-            alert("Error logging out")
-       } else { 
-        alert("Signed Out");
-       }
-    }
+const Dashboard = () => {
+    
 
     return (
-        <div>
-            <h1 className="headingText">ApplyNest</h1>
-            <button onClick={handleLogOut}>Log Out</button>
+        <div className="dashboard-container">
+            <div className="sidebar-section">
+                <SideBar/>
+            </div>
+            <div className="main-content">
+                <h1 className="headingText">ApplyNest</h1>
+            
+              <div className="cards-container">
+                    <Cards/>
+              </div>
+             </div>
+            
         </div>
     );
 }

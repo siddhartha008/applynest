@@ -1,0 +1,90 @@
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #D4C9BE;
+    color: #123458;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Floating Add Button */
+.floating-add-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #123458;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(18, 52, 88, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.floating-add-btn:hover {
+    background-color: #0f2a47;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(18, 52, 88, 0.4);
+}
+
+.floating-add-btn::before {
+    content: '+';
+    color: #F1EFEC;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Tooltip */
+.floating-add-btn .tooltip {
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #123458;
+    color: #F1EFEC;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.floating-add-btn .tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-left-color: #123458;
+}
+
+.floating-add-btn:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+}
