@@ -6,6 +6,7 @@ import './addUni.css';
 
 export default function AddUni({ onClose, onUniAdded, user }) {
   const [formData, setFormData] = useState({
+    user_id: user['user'].id,
     uniName: '',
     uniCity: '',
     programName: '',
@@ -39,12 +40,12 @@ export default function AddUni({ onClose, onUniAdded, user }) {
       }
 
       const newUniversity = {
+        user_id: user['user'].id,
         uniName: formData.uniName,
         uniCity: formData.uniCity,
         programName: formData.programName,
         deadline: formData.deadline || null,
         tuition: formData.tuition ? parseFloat(formData.tuition) : null,
-        user_id: user.id
       };
 
       const { data, error } = await supabase
@@ -69,12 +70,13 @@ export default function AddUni({ onClose, onUniAdded, user }) {
         throw new Error('No user logged in');
       }
       const newUniversity = {
+        user_id:  user['user'].id,
         uniName: formData.uniName,
         uniCity: formData.uniCity,
         programName: formData.programName,
         deadline: formData.deadline || null,
-        tuition: formData.tuition ? parseFloat(formData.tuition) : null,
-        user_id: user.id
+        tuition: formData.tuition ? parseFloat(formData.tuition) : null
+        
       };
       const { data, error } = await supabase
         .from('universities')

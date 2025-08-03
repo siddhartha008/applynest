@@ -1,11 +1,16 @@
 import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import {supabase} from './utils/client'
-import './App.css'
+
 import Dashboard from './pages/Dashboard/Dashboard'
 import AuthPage from './pages/AuthPage/AuthPage'
-import SignUpForm from './components/auths/SignUpForm'
-import LogInForm from './components/auths/LogInForm'
+import Search from "./pages/Search/Search.jsx";
+import Export from "./pages/Export/export.jsx";
+import Profile from  "./pages/Profile/profile.jsx"
+
+import './App.css'
+
 
 function App() {
   const [user, setUser] = useState(null)
@@ -24,19 +29,21 @@ function App() {
   }, []);
 
   return (
+    <BrowserRouter>
     <div>
-      {
-        user ? (
-          <Dashboard/>
-        ) : (
-        <>
-            <LogInForm/>
-            <SignUpForm/>
-          </>
-        )
-      }
+      {user ? (
+        <Routes>
+          <Route path="/" element={<Dashboard user={user} />} />
+          <Route path="/search" element={<Search user={user} />} />
+          <Route path="/export" element={<Export  user={user} />} />
+          <Route path="/profile" element={<Profile user={user} />} />
+        </Routes>
+      ) : (
+        <AuthPage />
+      )}
     </div>
+  </BrowserRouter>
   )
 }
 
-export default App
+export default App;
