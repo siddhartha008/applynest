@@ -1,27 +1,28 @@
 .sidebar {
     height: 100vh;
+    width: 100%;
     padding: 20px 15px;
     display: flex;
     flex-direction: column;
     background-color: #F1EFEC;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Nunito', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    position: relative;
 }
 
 .sidebar-header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    margin-bottom: 1em;
+    padding-bottom: 0.6x;
     border-bottom: 1px solid #030303;
 }
 
 .sidebar-header h3 {
-    margin: 10px 0 0 0;
+    margin: 0.5em 0 0 0;
     color: #123458;
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-align: center;
 }
 
@@ -30,58 +31,49 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
 }
 
 
 .nav-div {
+    width: 90%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     color: #123458;
-    padding: 12px 15px;
-    margin: 5px 0;
+    margin: 0.2em 0;
     text-decoration: none;
-    border-radius: 15px;
+    border-radius: 1em;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
-
-
-
 .nav-link {
     display: block;
-    padding: 12px 15px;
+    padding: 0.8em 0.5em;
     text-decoration: none;
     color: #123458;
-    border-radius: 6px;
-    font-size: 1em;
+    border-radius: 1em;
+    font-size: 0.9em;
     font-weight: bold;
     text-align: center;
 }
 
 .nav-div:hover:not(.selected) {
     background-color: rgba(18, 52, 88, 0.05);
-    border-radius: 15px;
+    border-radius: 10pxem;
     transform: translateX(5px);
 }
 
 .nav-div.selected {
     background-color: #123458;
     color: #F1EFEC;
-    border-radius: 15px;
+    border-radius: 1em;
     transform: translateX(5px);
-    box-shadow: 0 4px 12px rgba(18, 52, 88, 0.2);
 }
 
 .nav-div.selected .nav-link {
     color: #F1EFEC;
-}
-
-.nav-div.selected svg {
-    color: #F1EFEC !important;
 }
 
 
@@ -90,8 +82,8 @@
     background-color: #123458;
     color: #F1EFEC;
     border: none;
-    border-radius: 8px;
-    width: 70%;
+    border-radius: 0.6em;
+    width: 60%;
     cursor: pointer;
     font-size: 1em;
     transition: background-color 0.2s ease;
@@ -99,5 +91,5 @@
 }
 
 .logout-btn:hover {
-    background-color: #123458;
+    transform: scale(1.02);
 }

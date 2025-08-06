@@ -7,9 +7,11 @@ import Dashboard from './pages/Dashboard/Dashboard'
 import AuthPage from './pages/AuthPage/AuthPage'
 import Search from "./pages/Search/Search.jsx";
 import Export from "./pages/Export/export.jsx";
-import Profile from  "./pages/Profile/profile.jsx"
+import Profile from  "./pages/Profile/profile.jsx";
+import PostDetail from "./pages/Forum/PostDetail.jsx";
 
 import './App.css'
+import Forum from "./pages/Forum/Forum.jsx";
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
           <Route path="/search" element={<Search user={user} />} />
           <Route path="/export" element={<Export  user={user} />} />
           <Route path="/profile" element={<Profile user={user} />} />
+          <Route path="/forum" element={<Forum user={user} />} />
+          <Route path="/post/:postId" element={<PostDetail user={user} />} />
         </Routes>
       ) : (
         <AuthPage />

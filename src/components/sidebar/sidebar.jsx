@@ -6,6 +6,7 @@ import {
   SheetIcon,
   UserRound,
   UserRoundPen,
+  MessageCircle,
 } from "lucide-react";
 
 import { Link, useLocation } from "react-router-dom";
@@ -18,7 +19,7 @@ const SideBar = ({ name }) => {
   // Update selected nav based on current route
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/" || path === "/dashboard") {
+    if (path === "/" || path === "/dashboard") { 
       setSelectedNav("dashboard");
     } else if (path === "/search") {
       setSelectedNav("search");
@@ -26,6 +27,8 @@ const SideBar = ({ name }) => {
       setSelectedNav("profile");
     } else if (path === "/export") {
       setSelectedNav("export");
+    } else if (path === "/forum") {
+      setSelectedNav("forum");
     }
   }, [location.pathname]);
 
@@ -64,13 +67,22 @@ const SideBar = ({ name }) => {
           <span className="nav-link">Search</span>
         </Link>
 
-        <Link
+        {/* <Link
           to="/profile"
           className={`nav-div ${selectedNav === "profile" ? "selected" : ""}`}
           onClick={() => setSelectedNav("profile")}
         >
           <UserRoundPen />
           <span className="nav-link">Profile</span>
+        </Link> */}
+
+        <Link
+          to="/forum"
+          className={`nav-div ${selectedNav === "forum" ? "selected" : ""}`}
+          onClick={() => setSelectedNav("forum")}
+        >
+          <MessageCircle />
+          <span className="nav-link">Forum</span>
         </Link>
 
         <Link

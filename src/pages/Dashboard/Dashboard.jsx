@@ -11,15 +11,13 @@ const Dashboard = (user) => {
     const [showAddUni, setShowAddUni] = useState(false);
     const [universities, setUniversities] = useState([]);
 
-    // Function to handle closing the modal
     const handleCloseAddUni = () => {
         setShowAddUni(false);
     };
 
-    // Function to handle successful university addition
     const handleUniAdded = () => {
-        fetchUniversities(); // Refresh the list
-        setShowAddUni(false); // Close the modal
+        fetchUniversities();
+        setShowAddUni(false);
     };
 
     useEffect(() => {
@@ -40,6 +38,7 @@ const Dashboard = (user) => {
         }
     };
 
+
     return (
         <div className="dashboard-container">
             <div className="sidebar-section">
@@ -51,14 +50,13 @@ const Dashboard = (user) => {
               <div className="cards-container">
                  {universities.length > 0 ? (
                     universities.map((university) => (
-                        <Cards school={university} />
+                        <Cards key={university.id} school={university} />
                     ))
                 ) : (
                     <p>No universities added yet.</p>
                 )}
               </div>
              </div>
-             {/* Floating Add Button */}
              <div className="floating-add-btn" onClick={() => setShowAddUni(true)}>
                 <span className="tooltip">Add a school</span>
             </div>
@@ -79,7 +77,5 @@ const Dashboard = (user) => {
         </div>
     );
 }
-
-
 
 export default Dashboard; 

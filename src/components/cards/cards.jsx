@@ -3,15 +3,22 @@ import "./cards.css"
 import { Trash } from "lucide-react";
 import { supabase } from "../../utils/client";
 
+const formatTuition = (tuition) => {
+    return tuition ? `$${Number(tuition).toLocaleString()}` : 'Tuition';
+};
+
 const Cards = ({school}) => {
     const [daysLeft, setDaysLeft] = useState(0);
+
     useEffect(() => {
         const calculateDaysLeft = () => {
-            const deadline = new Date(school.deadline);
-            const today = new Date();
-            const timeDiff = deadline - today;
-            const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-            setDaysLeft(daysDiff);
+            if (school.deadline) {
+                const deadline = new Date(school.deadline);
+                const today = new Date();
+                const timeDiff = deadline.getTime() - today.getTime();
+                const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+                setDaysLeft(daysDiff);
+            }
         };
     
         calculateDaysLeft();
@@ -32,24 +39,23 @@ const Cards = ({school}) => {
     }
     
     return (
-        <div>
-            <div className="cards-container">
-                        <div className="cards">
-                            <h2>{school.uniName || 'Uni Name'}</h2>
-                            <p>{school.uniCity || 'Uni Location'}</p>
-                            <p>{school.programName || 'Program Desc'}</p>
-                            <p>${school.tuition || 'Tuition'}</p>
-                            <p>{daysLeft} days left to apply</p>
-                            
-                            <div className="delete-btn" onClick={() => handleDelete(school.id)}> 
-                                <Trash/>
-                            </div>
-
-                        </div>
-                       
+        <div className="cards">
+            <div className="card-header">
+                <h2 className="card-title">{school.uniName || 'Uni Name'}</h2>
+                <p className="card-location">{school.uniCity || 'Location'}</p>
             </div>
-
-           
+            
+            <div className="card-body">
+                <p>{school.programName || 'Program Description'}</p>
+                <p className="card-tuition">{formatTuition(school.tuition)}</p>
+            </div>
+            
+            <div className="card-footer">
+                <p className="card-deadline">{daysLeft >= 0 ? `${daysLeft} days left to apply` : 'Deadline passed'}</p>
+                <div className="delete-btn" onClick={() => handleDelete(school.id)}> 
+                    <Trash size={20} />
+                </div>
+            </div>
         </div>
     )
 }

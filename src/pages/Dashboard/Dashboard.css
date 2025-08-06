@@ -2,33 +2,39 @@
     display: flex;
     height: 100vh;
     width: 100vw;
+    margin: 0;
+    padding: 0;
     position: fixed;
     top: 0;
     left: 0;
-    margin: 0;
-    padding: 0;
 }
 
 .sidebar-section {
-    width: 15%;
+    width: 20%;
     min-width: 200px;
-    border-right: 2px solid rgba(18, 52, 88, 0.1);
+    max-width: 250px;
+    border-right: 1px solid #D4C9BE;
     overflow-y: auto;
+    background-color: #F1EFEC;
+    flex-shrink: 0;
     position: relative;
 }
 
 .main-content {
-    width: 85%;
+    width: 80%;
+    flex: 1;
     padding: 20px;
     overflow-y: auto;
-    flex: 1;
+    background-color: #F1EFEC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .headingText {
     color: #123458;
     margin: 0;
     margin-bottom: 1em;
-    font-family: 'Nunito', system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 .cards-container {
@@ -42,6 +48,8 @@
     max-width: 1200px;
     margin: 0 auto;
 }
+
+
   
 
 /* Responsive Design */
@@ -60,3 +68,127 @@
         gap: 20px;
     }
 }
+
+.floating-add-btn {
+
+    position: fixed;
+    
+    bottom: 30px;
+    
+    right: 30px;
+    
+    width: 60px;
+    
+    height: 60px;
+    
+    background-color: #123458;
+    
+    border-radius: 50%;
+    
+    display: flex;
+    
+    align-items: center;
+    
+    justify-content: center;
+    
+    cursor: pointer;
+    
+    box-shadow: 0 4px 12px rgba(18, 52, 88, 0.3);
+    
+    transition: all 0.3s ease;
+    
+    z-index: 1000;
+    
+    }
+    
+    
+    
+    .floating-add-btn:hover {
+    
+    background-color: #0f2a47;
+    
+    transform: scale(1.1);
+    
+    box-shadow: 0 6px 20px rgba(18, 52, 88, 0.4);
+    
+    }
+    
+    
+    
+    .floating-add-btn::before {
+    
+    content: '+';
+    
+    color: #F1EFEC;
+    
+    font-size: 24px;
+    
+    font-weight: bold;
+    
+    }
+    
+    
+    
+    /* Tooltip */
+    
+    .floating-add-btn .tooltip {
+    
+    position: absolute;
+    
+    right: 70px;
+    
+    top: 50%;
+    
+    transform: translateY(-50%);
+    
+    background-color: #123458;
+    
+    color: #F1EFEC;
+    
+    padding: 8px 12px;
+    
+    border-radius: 6px;
+    
+    font-size: 14px;
+    
+    white-space: nowrap;
+    
+    opacity: 0;
+    
+    visibility: hidden;
+    
+    transition: all 0.3s ease;
+    
+    pointer-events: none;
+    
+    }
+    
+    
+    
+    .floating-add-btn .tooltip::after {
+    
+    content: '';
+    
+    position: absolute;
+    
+    left: 100%;
+    
+    top: 50%;
+    
+    transform: translateY(-50%);
+    
+    border: 6px solid transparent;
+    
+    border-left-color: #123458;
+    
+    }
+    
+    
+    
+    .floating-add-btn:hover .tooltip {
+    
+    opacity: 1;
+    
+    visibility: visible;
+    
+    }

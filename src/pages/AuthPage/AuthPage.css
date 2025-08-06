@@ -1,7 +1,13 @@
 /* Auth Page Styles */
 
 
+//make it center on the page
+.auth-container {
+    
+}
+
 .auth-card {
+    margin:auto;
     background: #F1EFEC;
     border-radius: 20px;
     padding: 2em;
@@ -22,7 +28,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #123458, #2a4d7a);
+    background: #123458;
 }
 
 .auth-header {
@@ -103,24 +109,21 @@
 }
 
 .auth-button {
-    background: linear-gradient(135deg, #123458, #2a4d7a);
+    background: #123458;
     color: #F1EFEC;
     border: none;
     padding: 16px 24px;
-    border-radius: 12px;
+    border-radius: 8px;
     font-size: 1.1rem;
     font-weight: 600;
     font-family: inherit;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.2s ease;
     margin-top: 10px;
-    position: relative;
-    overflow: hidden;
 }
 
 .auth-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(18, 52, 88, 0.3);
+    background: #0f2a47;
 }
 
 .auth-button:active:not(:disabled) {
