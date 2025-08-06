@@ -56,8 +56,8 @@ const AuthPage = () => {
 
                 if (error) throw error;
                 console.log('Sign up successful:', data);
-                alert('Sign up successful. Please check your email for verification.');
-                navigate('/login');
+                alert('Sign up successful. Please check your email for verification and log in.');
+
             }
         } catch (error) {
             setError(error.message);
